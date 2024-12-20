@@ -75,3 +75,15 @@ def reverse_string(input_string):
     reversed_string = f"The reversed string is: {reversed_string}\n\n.Executed using the reverse_string function."
     # print (f"DEBUG: reversed_string: {reversed_string}")
     return reversed_string
+
+def none(input_string):
+    """
+    Placeholder function for no tool selected.
+
+    Parameters:
+    input_string (str): The input string.
+
+    Returns:
+    str: A message indicating no tool was selected.
+    """
+    return f"No tool selected with {input_string}. Please choose a tool from the list."

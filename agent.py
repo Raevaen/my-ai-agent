@@ -4,18 +4,19 @@ from toolbox import ToolBox
 
 agent_system_prompt_template = """
 You are an agent with access to a toolbox. Given a user query, 
-you will determine which tool, if any, is best suited to answer the query. 
+you will determine which tool is best suited to answer the query if none is found then it's ok. 
 You will generate the following JSON response:
 
 "tool_choice": "name_of_the_tool",
 "tool_input": "inputs_to_the_tool"
 
-tool_choice: The name of the tool you want to use. It must be a tool from your toolbox or "no tool" if you do not need to use a tool.
+tool_choice: The name of the tool you want to use. It must be a tool from your toolbox or "no tool" if you do not use a tool to solve the task.
 tool_input: The specific inputs required for the selected tool. If no tool, just provide a response to the query.
 Here is a list of your tools along with their descriptions:
 {tool_descriptions}
 
-Please make a decision based on the provided user query and the available tools.
+Make a decision based on the provided user query, the available tools and suggest which tool could be used if "no tool" is found.
+Verify that the response is a valid JSON object.
 """
 
 class Agent:
@@ -64,7 +65,7 @@ class Agent:
             model_instance = self.model_service(
                 model=self.model_name,
                 system_prompt=agent_system_prompt,
-                temperature=0,
+                temperature=0.1,
                 stop=self.stop
             )
         else:
