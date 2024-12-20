@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     # Uncomment below to run with Ollama
     model_service = OllamaModel
-    model_name = "llama3.1"
+    model_name = "llama3.2"
     stop = "<|eot_id|>"
 
     agent = Agent(tools=tools, model_service=model_service, model_name=model_name, stop=stop)
