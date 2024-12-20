@@ -49,7 +49,7 @@ class OllamaModel:
             request_response = requests.post(
                 self.model_endpoint, 
                 headers=self.headers, 
-                data=json.dumps(payload)
+                json=payload
             )
 
             print("REQUEST RESPONSE", request_response)
